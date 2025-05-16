@@ -68,7 +68,7 @@ console.log(res);
 // --- Deleting elements in Array ---
 const deleteArr = [1,3,4,5,8,9,100];
 
-// splice(index after which the element(s) are to be deleted (Not the element in the index itself), how many?) -> O(N) O(1)
+// splice(index after which the element(s) are to be deleted (Not the element in the index itself), how many elements to be deleted from given index?) -> O(N) O(1)
 deleteArr.splice(0, 2); // [4,5,8,9,100];
 
 // Remove the last element from array -> O(1) O(1)
