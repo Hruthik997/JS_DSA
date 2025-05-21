@@ -1,5 +1,4 @@
 function deleteDuplicatesFromSortedLinkedList(head) {
-    // TO DO
     if(head === null) {
         return null;
     }
@@ -16,7 +15,6 @@ function deleteDuplicatesFromSortedLinkedList(head) {
 }
 
 function CompareLists(llist1, llist2) {
-    // TO DO
     let len1 = 0;
     let len2 = 0;
     while(llist1 && llist2) {
@@ -61,3 +59,29 @@ function removeElements(head, val) {
 }
 
 // Try with your own approach also
+
+
+function mergeTwoSortedLinkedLists(head1, head2) {
+    let dummyNode = new Node(0);
+    let currentNode = dummyNode;
+
+    while(head1 && head2) {
+        if(head1.value <= head2.value) {
+            currentNode.next = head1;
+            head1 = head1.next;
+        } else {
+            currentNode.next = head2;
+            head2 = head2.next;
+        }
+        currentNode = currentNode.next;
+    }
+
+    if(head1) {
+        currentNode.next = head1;
+    } 
+    if(head2) {
+        currentNode.next = head2;
+    }
+
+    return dummyNode.next;
+}

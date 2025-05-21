@@ -1,7 +1,3 @@
-// Created by Elshad Karimov
-// Copyright @ 2025 AppMillers. All rights reserved
-// www.appmillers.com
-
 // *** ANALOGIES ***
 // Circular Single Linked List -> Traversing through players in Ludo Game
 // Double Linked List -> Music player with option to play previous and next songs
@@ -196,6 +192,18 @@ class LinkedList {
         this.tail = null
         this.length = 0
     }  
+
+    // Floyds Hare & Tortoise Algorithm to find Middle value
+    // Slow runs at 1 node per loop and fast runs at 2 nodes per loop, Effectively slow being middle once the loop completes.
+    findMiddleValue() {
+        let slow = this.head;
+        let fast = this.head;
+        while(fast && fast.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        console.log(slow.value);
+    }
 }
 
 
