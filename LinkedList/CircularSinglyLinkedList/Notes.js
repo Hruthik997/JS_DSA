@@ -90,7 +90,7 @@ class CSLinkedList {
         return false;
     }
 
-    get(index) {
+    get(index) {     // O(N) O(1)
         if(index < 0 || index >= this.length) {
             return null;
         }
@@ -101,13 +101,77 @@ class CSLinkedList {
         return currentNode;
     }
 
-    set(index, value) {
+    set(index, value) {  // O(N) O(1)
         let tempNode = this.get(index);
         if(tempNode) {
             tempNode.value = value;
             return true;
         }
         return false;
+    }
+
+    popFirst() {   // O(1) O(1)
+        if(this.length === 0) {
+            return null;
+        }
+        let poppedNode = this.head;
+        if(this.length === 1) {
+            this.head = null;
+            this.tail = null;
+            
+        } else {
+            this.head = this.head.next;
+            this.tail.next = this.head;
+            poppedNode.next = null;
+        }
+        this.length--;
+        return poppedNode;
+    }
+
+    pop() {   // O(N) O(1)
+        if(this.length === 0) {
+            return null;
+        }
+        let poppedNode = this.tail;
+        if(this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else  {
+            let currentNode = this.head;
+            while(currentNode.next !== this.head) {
+                currentNode = currentNode.next;
+            }
+            this.tail = currentNode;
+            currentNode.next = this.head;
+            poppedNode.next = null;
+        }
+        this.length--;
+        return poppedNode;
+    }
+
+    remove(index) {  // O(N) O(1)
+        if(index < 0 || index >= this.length) {
+            return null;
+        }
+
+        if(index === 0) {
+            return this.popFirst();
+        } else if(index == this.length - 1) {
+            return this.pop;
+        } 
+        let prevNode = this.get(index - 1);
+        let poppedNode = prevNode.next;
+        prevNode.next = poppedNode.next;
+        poppedNode.next = null;
+        this.length--;
+        return poppedNode;
+    }
+
+    deleteAll() {   // O(1) O(1)
+        this.tail.next = null;
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
     }
 }
 

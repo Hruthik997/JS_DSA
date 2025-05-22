@@ -61,7 +61,7 @@ class LinkedList {
             newNode.next = this.head
             this.head = newNode
         }
-        this.length++    
+        this.length++
     }
 
     insert(value, index) {   // O(N) O(1)
@@ -77,18 +77,18 @@ class LinkedList {
         } else if (index === - 1 || index === this.length) {
             this.tail.next = newNode
             this.tail = newNode
-            
+
         } else {
-           let tempNode = this.head
-            for (let i=0; i < index-1; i++) {
+            let tempNode = this.head
+            for (let i = 0; i < index - 1; i++) {
                 tempNode = tempNode.next
             }
             newNode.next = tempNode.next
-            tempNode.next = newNode 
+            tempNode.next = newNode
         }
         this.length++
         return true
-                
+
     }
 
     traverse() {  // O(N) O(1)
@@ -113,14 +113,14 @@ class LinkedList {
     }
 
 
-    get(index){   // O(N) O(1)
+    get(index) {   // O(N) O(1)
         if (index === -1) {
             return this.tail
         } else if (index < -1 || index >= this.length) {
             return null
         }
         let current = this.head
-        for (let i =0; i < index; i++) {
+        for (let i = 0; i < index; i++) {
             current = current.next
         }
         return current
@@ -136,7 +136,7 @@ class LinkedList {
     }
 
     popFirst() {       // O(1) O(1)
-        if (this.length === 0 ) {
+        if (this.length === 0) {
             return null
         }
         const poppedNode = this.head
@@ -145,7 +145,7 @@ class LinkedList {
             this.tail = null
         } else {
             this.head = this.head.next
-            poppedNode.next = null  
+            poppedNode.next = null
         }
         this.length--
         return poppedNode
@@ -157,14 +157,14 @@ class LinkedList {
             this.head = null
             this.tail = null
         } else {
-           let temp = this.head
+            let temp = this.head
             while (temp.next !== this.tail) {
                 temp = temp.next
             }
             this.tail = temp
-            temp.next = null 
+            temp.next = null
         }
-        
+
         this.length--
         return poppedNode
     }
@@ -176,10 +176,10 @@ class LinkedList {
         if (index === 0) {
             return this.popFirst()
         }
-        if (index === this.length-1) {
+        if (index === this.length - 1) {
             return this.pop()
         }
-        const prevNode = this.get(index-1)
+        const prevNode = this.get(index - 1)
         const poppedNode = prevNode.next
         prevNode.next = poppedNode.next
         poppedNode.next = null
@@ -191,23 +191,48 @@ class LinkedList {
         this.head = null
         this.tail = null
         this.length = 0
-    }  
+    }
 
     // Floyds Hare & Tortoise Algorithm to find Middle value
     // Slow runs at 1 node per loop and fast runs at 2 nodes per loop, Effectively slow being middle once the loop completes.
-    findMiddleValue() {
+    findMiddleValue() {  // O(N) O(1)
         let slow = this.head;
         let fast = this.head;
-        while(fast && fast.next) {
+        while (fast && fast.next) {
             slow = slow.next;
             fast = fast.next.next;
         }
         console.log(slow.value);
     }
+
+
+    /*
+    Remember to follow steps in same order
+    Reverse a linked list using three pointers namely prev, current & next
+    update next to current.next to not loose the address of remaining linked list
+    update current.next to prev (This is the step where you are reversing the links)
+    update prev to current
+    update current to next
+    Follow same procedure until current is not equal to null 
+    */
+    reverse() {  // O(N) O(1)
+        if (this.head) {
+            let prev = null;
+            let current = this.head;
+            let next = null;
+            while (current != null) {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            return prev;
+        } else {
+            return null;
+        }
+
+    }
 }
-
-
-
 
 let newLinkedList = new LinkedList()
 newLinkedList.append(10)
