@@ -160,6 +160,7 @@ function findMergeNode(headA, headB) {
             if(tempA == null) tempA = headB;
             if(tempB == null) tempB = headA;
         }
+// This is written so that if the head1 and head2 are themselves equal
         return tempA.data;
     } else {
         return null;
