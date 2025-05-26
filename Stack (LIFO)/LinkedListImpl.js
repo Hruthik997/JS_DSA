@@ -22,7 +22,7 @@ class Stack {
 
     push(value) {   // O(1)  O(1)
         let newNode = new Node(value);
-        if(this.length == 0) {
+        if (this.length == 0) {
             this.top = newNode;
         } else {
             newNode.next = this.top;
@@ -32,7 +32,7 @@ class Stack {
     }
 
     pop() {   // O(1)  O(1)
-        if(this.length == 0) {
+        if (this.length == 0) {
             return null;
         }
         let poppedNode = this.top;

@@ -12,9 +12,9 @@ class Stack {
     }
 
     toString() {   // O(1) O(1)
-        if(this.isEmpty) {
+        if (this.isEmpty) {
             return "Empty stack";
-        } else{ 
+        } else {
             return this.items.slice().reverse().join('\n');
         }
     }
@@ -24,20 +24,20 @@ class Stack {
     }
 
     pop() {    // O(1) O(1)
-        if(this.isEmpty) {
+        if (this.isEmpty) {
             return "Empty stack";
-        } else{ 
+        } else {
             return this.items.pop();
         }
     }
 
     peek() {     // O(1) O(1)
-        if(this.isEmpty) {
+        if (this.isEmpty) {
             return "Empty stack";
-        } else{ 
+        } else {
             return this.items[this.items.length - 1];
         }
-        
+
     }
 
     size() {   // O(1) O(1)
